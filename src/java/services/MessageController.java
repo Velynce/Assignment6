@@ -77,20 +77,16 @@ public class MessageController {
 
     public void edit(int id, Message message) {
         // Find  by ID
-        Message oldMessage = getById(id);
         // Make found one match passed one
         // - set Author
         // - set Date, etc...
-        oldMessage.setAuthor("author");
-        oldMessage.setContent("");
-        oldMessage.setDate(new Date());
-        oldMessage.setTitle("title");
+        messages.set(id,message);
         
         
     }
 
     public void delete(int id) {
-        
+        messages.remove(id);
 
     }
 
