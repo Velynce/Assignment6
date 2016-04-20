@@ -80,14 +80,11 @@ public class MessageController {
         // Make found one match passed one
         // - set Author
         // - set Date, etc...
-        messages.set(id,message);
-        
-        
+        messages.set(id,message);        
     }
 
     public void delete(int id) {
         messages.remove(id);
-
     }
 
     public List<Message> getAll() {
