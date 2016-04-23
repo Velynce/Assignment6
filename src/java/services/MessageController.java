@@ -85,9 +85,7 @@ public class MessageController {
         // - set Date, etc...
         oldMessage.setAuthor(message.getAuthor());
         oldMessage.setContent(message.getContent());
-        oldMessage.setTitle(message.getTitle());
-        oldMessage.toJson();
-        
+        oldMessage.setTitle(message.getTitle());      
     }
 
     public void delete(int id) {

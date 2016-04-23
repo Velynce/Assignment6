@@ -18,6 +18,7 @@ import javax.json.JsonObjectBuilder;
  * @author c0642607
  */
 public class Message {
+
     private int id;
     private String title;
     private String content;
@@ -63,20 +64,18 @@ public class Message {
     public void setDate(Date date) {
         this.date = date;
     }
-    
+
     public JsonObject toJson() {
         DateFormat format = new SimpleDateFormat("MM/DD/YYYY");
-        String dates = null;
-        
-        
-     JsonObject json = Json.createObjectBuilder()
-                                  .add("id", getId())
-                                  .add("title", getTitle())
-                                  .add("content", getContent())
-                                  .add("author", getAuthor())
-                                  .add("date", format.format(date))
-                                  .build();
+
+        JsonObject json = Json.createObjectBuilder()
+                .add("id", getId())
+                .add("title", getTitle())
+                .add("content", getContent())
+                .add("author", getAuthor())
+                .add("date", format.format(date))
+                .build();
         return json;
     }
-    
+
 }
