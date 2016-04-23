@@ -5,6 +5,7 @@
  */
 package services;
 
+import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -36,4 +37,17 @@ public class MessageServices {
         return json.build();
 
     }
+    
+    @GET
+    @Path("{id}")
+    public Json getById(int id) {
+        return null;
+    }
+    
+    @GET
+    @Path("{to}/{from}")
+    public JsonArray getByDate(List<Message> message) {
+        return null;
+    }
+    
 }

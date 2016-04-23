@@ -5,6 +5,7 @@
  */
 package services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,17 +23,18 @@ import javax.json.JsonObjectBuilder;
 @ApplicationScoped
 public class MessageController {
 
+    SimpleDateFormat d = new SimpleDateFormat("yyyy-mm-dd");
     private Message message;
     private List<Message> messages = new ArrayList<>();
     
     public MessageController() {
-        Message m = new Message();
-        m.setAuthor("Bob");
-        m.setContent("Test");
-        m.setDate(new Date());
-        m.setId(0);
-        m.setTitle("OK");
-        messages.add(m);
+        
+    }
+    
+    public MessageController(JsonObject json) {
+        json.getString("author", "");
+        json.getString("title", "");
+        json.getString("content", "");
     }
 
     public Message getById(int id) {
@@ -77,14 +79,22 @@ public class MessageController {
 
     public void edit(int id, Message message) {
         // Find  by ID
+        Message oldMessage = getById(id);
         // Make found one match passed one
         // - set Author
         // - set Date, etc...
-        messages.set(id,message);        
+        oldMessage.setAuthor(message.getAuthor());
+        oldMessage.setContent(message.getContent());
+        oldMessage.setTitle(message.getTitle());
+        oldMessage.toJson();
+        
     }
 
     public void delete(int id) {
-        messages.remove(id);
+        Message m = getById(id);
+        if(m != null) {
+            messages.remove(m);
+        }
     }
 
     public List<Message> getAll() {
